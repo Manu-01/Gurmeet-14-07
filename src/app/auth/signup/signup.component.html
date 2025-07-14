@@ -1,0 +1,135 @@
+<div class="conatainer-fluid">
+    <div class="row d-flex justify-content-center align-items-center mt-3">
+        <div class="col-lg-6 border rounded p-5">
+            <form [formGroup]="myForm">
+                <div class="mb-3">
+                    <label for="Name123" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="Name123" placeholder="Type your Name"
+                        formControlName="name" aria-describedby="name">
+                    <small id="name" class="form-text"
+                        *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched"> your Name
+                        with anyone else.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputemail11" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleInputemail11" placeholder="Email"
+                        formControlName="email">
+                    <small id="email" class="form-text"
+                        *ngIf="myForm.get('email')?.hasError('required') && myForm.get('email')?.touched"> your email
+                        with required else.</small>
+                    <small id="email" class="form-text"
+                        *ngIf="myForm.get('email')?.hasError('email') && myForm.get('email')?.errors?.['pattern']"> your
+                        email
+                        email is invalid</small>
+
+                </div>
+                <div class="mb-3 ">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <label for="Address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="exampleInputAddress" formControlName="address"
+                                aria-describedby="Address" placeholder="Address">
+                            <small id="address" class="form-text"
+                                *ngIf="myForm.get('address')?.invalid && myForm.get('address')?.touched">
+                                your email with anyone else.</small>
+
+                        </div>
+                        <div class="col-md-3">
+                            <label for="state" class="form-label">Address2</label>
+                            <input type="text" class="form-control" id="exampleInputAddress2"
+                                aria-describedby="AddressHelp" placeholder="Address2" formControlName="address2">
+                            <small id="address2" class="form-text"
+                                *ngIf="myForm.get('address2')?.invalid && myForm.get('address2')?.touched">
+                                Address is Required</small>
+
+                        </div>
+                        <div class="col-md-3">
+                            <label for="zip" class="form-label">Zip code</label>
+                            <input type="text" class="form-control" id="zip" placeholder="ZipCode"
+                                formControlName="zipCode">
+                            <small id="name" class="form-text"
+                                *ngIf="myForm.get('zipCode')?.hasError('required') && myForm.get('zipCode')?.touched">
+                                Zip code required.</small>
+                            <small id="name" class="form-text"
+                                *ngIf="myForm.get('zipCode')?.invalid && myForm.get('zipCode')?.touched && myForm.get('zipCode')?.errors?.['pattern']">
+                                Zip code invalid.</small>
+                            <small id="name" class="form-text" *ngIf="myForm.get('zipCode')?.errors?.['maxLength']">
+                                Zip code Minlenth 6.</small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3   ">
+                    <div class="row  align-items-center">
+                        <div class="col-md-5">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="exampleInputCity" aria-describedby="CityHelp"
+                                placeholder="City" formControlName="city">
+                            <small id="name" class="form-text"
+                                *ngIf="myForm.get('city')?.invalid && myForm.get('city')?.touched">
+                                your email with anyone else.</small>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="StateRegion" class="form-label">State/Region</label>
+                            <input type="text" class="form-control" id="exampleInputStateRegion"
+                                aria-describedby="StateRegionHelp" placeholder="State/Region" formControlName="state">
+                            <small id="name" class="form-text"
+                                *ngIf="myForm.get('state')?.invalid && myForm.get('state')?.touched">
+                                your email with anyone else.</small>
+
+                        </div>
+                        <div class="col-md-3">
+                            <label for="zip" class="form-label">Country</label>
+                            <input type="text" class="form-control" placeholder="country" id="zip" placeholder=""
+                                formControlName="country">
+                            <small id="name" class="form-text"
+                                *ngIf="myForm.get('country')?.invalid && myForm.get('country')?.touched">
+                                your email with anyone else.</small>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form_array" formArrayName="skills">
+                    <div class="mb-3" *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i">
+                        <div class="row align-items-center">
+                            <div class="col-md-5">
+                                <label class="form-label">Skill Name</label>
+                                <input type="text" class="form-control" formControlName="skillName"
+                                    placeholder="Skill Name">
+                                <small class="form-text text-danger"
+                                    *ngIf="skill.get('skillName')?.invalid && skill.get('skillName')?.touched">
+                                    Skill name is required.
+                                </small>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Branch</label>
+                                <input type="text" class="form-control" formControlName="branch"
+                                    placeholder="Branch Name">
+                                <small class="form-text text-danger"
+                                    *ngIf="skill.get('branch')?.invalid && skill.get('branch')?.touched">
+                                    Branch name is required.
+                                </small>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Experience</label>
+                                <input type="text" class="form-control" formControlName="experience"
+                                    placeholder="Experience">
+                                <small class="form-text text-danger"
+                                    *ngIf="skill.get('experience')?.invalid && skill.get('experience')?.touched">
+                                    Experience is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn_container gap-5">
+                    <button type="button" class="btn btn-danger me-3" (click)="addSkill()">addSkill</button>
+                    <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
