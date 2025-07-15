@@ -5,18 +5,18 @@ import { DashboardThemeComponent } from './theme-wrapper/dashboard-theme/dashboa
 
 const routes: Routes = [
 
-  // {
-  //   path: '', component: AuthThemeComponent,
-  //   children: [
-  //     { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  //     {
-  //       path: '',
-  //       loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
-  //     }
-  //   ]
-  // },
   {
-    path: '', component: DashboardThemeComponent,
+    path: '', component: AuthThemeComponent,
+    children: [
+      // { path: '', redirectTo: 'auth', pathMatch: 'full' },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+      }
+    ]
+  },
+  {
+    path: 'dashboard', component: DashboardThemeComponent,
     children: [
       { path: '', redirectTo: 'landingpage', pathMatch: 'full' },
       {

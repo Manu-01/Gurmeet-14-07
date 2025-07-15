@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <form
+      action=""
+      [formGroup]="myForm"
+      class="col-4 border rounded p-3 m-auto"
+    >
+      <div class="mb-3">
+        <label for="Select" class="form-label">Country select menu</label>
+        <select
+          id="Select"
+          class="form-select"
+          formControlName="country"
+          (change)="onSelectedChangeCountry($event)"
+        >
+          <option value disabled selected>Select</option>
+
+@for(item of country;track item.name){
+    
+  <option [value]="item.isoCode">
+            {{ item.name }}
+          </option>
+}
+
+
+
+          
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="Select" class="form-label">State select menu</label>
+        <select
+          id="Select"
+          class="form-select"
+          formControlName="state"
+          (change)="onSelectedChangeState($event)"
+        >
+          <option value disabled>select</option>
+          <option *ngFor="let stateData of state" [value]="stateData.isoCode">
+            {{ stateData.name }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="Select" class="form-label"> City select menu</label>
+        <select id="Select" class="form-select" formControlName="city">
+          <option value disabled>select</option>
+          <option *ngFor="let cityData of city" [value]="cityData.isoCode">
+            {{ cityData.name }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>

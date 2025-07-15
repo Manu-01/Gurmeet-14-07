@@ -29,6 +29,7 @@ ModuleRegistry.registerModules([AllCommunityModule, ClientSideRowModelModule]);
     CapitalizePipe,
     ButtonComponent,
     ModalComponentComponent,
+
   ],
   imports: [
     BrowserModule,

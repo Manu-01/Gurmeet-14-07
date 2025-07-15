@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { BenderReactiveformComponent } from './bender-reactiveform/bender-reactiveform.component';
 
 const routes: Routes = [
   // {
@@ -10,7 +11,7 @@ const routes: Routes = [
   // },
   {
     path:'',
-    component:SignupComponent
+    component:BenderReactiveformComponent
   }
 ];
 
